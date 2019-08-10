@@ -1,13 +1,13 @@
 version: '3'
 
 services:
-  logger:
-    build: ./logger
-    image: logger
+  # logger:
+  #   build: ./logger
+  #   image: logger
   opa:
     image: openpolicyagent/opa:0.13.0
     ports:
       - 8181:8181
     volumes:
       - .:/workspace
-    command: ["run", "--server", "-c", "/workspace/config.yml", "/workspace/policy.rego", "/workspace/mask.rego"]
+    command: ["run", "--server", "--set", "decision_logs.console=true", "/workspace/policy.rego", "/workspace/mask.rego"]
