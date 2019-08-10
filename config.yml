@@ -1,0 +1,10 @@
+services:
+  logger:
+    url: http://logger:3000/
+
+decision_logs:
+  # console: true
+  service: logger
+  reporting:
+    min_delay_seconds: 5
+    max_delay_seconds: 10
